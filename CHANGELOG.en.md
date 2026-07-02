@@ -2,6 +2,33 @@
 
 > Plain-language notes on what changed in each version.
 
+## 1.1.0
+
+A big round of fixes after 1.0.8 — straight from your reports.
+
+**Stability & settings**
+- 🖥 **Fixed the "stretched screen" and random crashes when switching between builds.** The cause was a config desync when your Documents folder lives in OneDrive: the game sometimes started with a stale config (wrong resolution) and crashed on heavy mods. The correct config is now always applied.
+- 💾 **In-game settings persist between sessions.** Before, you could change settings in-game, quit, relaunch — and get the old config back. Changes are now saved — but **only if the game exited cleanly** (a crash won't save a broken config over your good one).
+- 🧱 **Shader baking no longer "hangs forever" if the game crashes.** Previously the crash-report window was hidden (the game is minimized during a bake), so the launcher thought it was still baking. It now detects that, aborts, and tells you plainly (whatever was already built is kept — just rerun to catch up).
+- 🩹 **Crash Doctor sees crashes again** for games launched through the launcher. The launcher was wrongly clobbering the symlink Crash Doctor uses to redirect the crash folder to its cache — it now stays out of that folder when Crash Doctor is enabled.
+- ⚓ **Optional official DLCs** (War Sails, Birth & Aging Options, Fast Mode) work correctly again. They used to be offered as "deletable" and then re-installed by copying tens of GB (breaking launch) — or, conversely, force-loaded in a game version where you hadn't enabled them. They're now proper on/off checkboxes in the mod list, loaded from the game install and never copied.
+
+**Mods & downloads**
+- ⬇ **Fixed Nexus downloads for mods with dependencies** (e.g. translations): the requirements popup used to block the download — now it works.
+- 📄 **Translations and patches** (archives with no `SubModule.xml`) no longer throw a cryptic error: the launcher explains it isn't a standard mod and **opens the folder with its files** so you can drop them into the target mod by hand.
+- 🩺 **Crash Doctor now sees your launched mods as enabled** on its "Mods" tab (they used to show as off).
+- 📊 **Progress bar when installing mods from an archive/folder.** Big packs (hundreds of mods, tens of GB) now show the **extraction** and **install** progress ("Installing mod X/N") — so it's clearly working, not frozen. The install can be cancelled.
+- ⚙️ Fixed per-profile **mod (MCM) settings** isolation.
+- 🗂 **"Add existing mod" no longer offers mods from other game versions.** It now lists only the current version's mods — so the "compatible only" checkbox was removed as redundant.
+
+**Interface**
+- 🔤 **Fixed blurry text** in context menus, hover tooltips and dropdown lists (popup text was soft/smeared).
+- 🧩 **Disabling a mod — new "Only this one" option.** Before, disabling a mod with dependents forced you to either disable everything or cancel. Now you can disable just **one** mod and keep the rest.
+- 🖥 **A maximized window no longer hides under the taskbar** — in fullscreen the bottom (status, buttons) is fully visible again. Multi-monitor aware.
+- 🌐 **The update window's changelog now follows the UI language** (English by default). It could previously show Russian even on an English UI.
+- 🏷 The "Our mods" button is renamed to **"Recommended mods"**.
+- ⌨ **Launch arguments can now be cleared** — an empty field is saved (it used to keep the old value).
+
 ## 1.0.8
 
 A big update after 1.0.4 — lots of new features and a pile of fixes.
