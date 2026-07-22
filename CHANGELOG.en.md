@@ -2,6 +2,43 @@
 
 > Plain-language notes on what changed in each version.
 
+## 1.1.3.5
+
+**Mods**
+- 🔄 **The launcher now notices when a mod has been updated.** Each profile keeps its own copy of every mod, so a Steam Workshop update (or a newer version that showed up in another profile, in the game folder or in a pack) never reached the profile by itself. Switching to a profile now quietly compares versions: if a newer copy is on disk, the mod is highlighted in the "will launch" list with an "↑ new version" tag, and an **"Update mods"** button appears on the main screen. Updating replaces the profile's copy while keeping its load order and enabled state; other profiles stay on their own versions.
+- 🌐 **Our own mods now tell you about new releases.** Crash Doctor, RTS Camera Universal, the TOR Russian translation and Lore-Hardcore are checked against their published releases (GitHub first, our backup server if GitHub is unreachable). When a newer release exists the mod gets a **"new release"** tag and installs in one click, exactly like it does from "✨ Our mods". If a suitable copy is already on your disk, that one is used and nothing is downloaded.
+- ⚓ **Official DLCs (War Sails, Birth & Aging Options, Fast Mode) can finally be removed from a profile.** A removed DLC used to come back — merely unticked — every time the mod list was rebuilt. Now it disappears, and you can bring it back from "Add existing mod", where such DLCs are listed as "Game DLC". No game files are copied or deleted; only the profile's contents change.
+- 🩺 **Crash Doctor no longer nags about an update forever.** Its releases are tagged by date, which the launcher read as a huge version number — so the installed mod always looked outdated and was re-downloaded on every install. Versions are now read correctly.
+- 🔁 **Mods that never bump their internal version stop offering the same update again and again.** RTS Camera Universal is exactly that case. The launcher now remembers which release it installed into a profile and won't offer it twice.
+- 💾 **Updating a mod no longer wipes what the mod itself accumulated.** Installing or updating used to delete the profile's copy of the mod folder and copy it again from scratch — taking with it everything the mod had written inside itself. For Crash Doctor that meant crashes captured during play disappeared, while crashes the player had deleted came back from the stale copy. An update is now applied on top (only the code in `bin` is replaced), and a mod's live folders live in a separate launcher store linked back into every copy — shared by all profiles of that game and surviving any update or reinstall. Game and mod settings (MCM, saves) are still kept per profile as before.
+- 🎯 **Updating a mod inside a pack profile now actually reaches the game.** The list showed the new version (Crash Doctor 1.8.1.3, say) while the game kept loading the pack's old one (1.7) — the profile's updated copy never made it into the game. The profile's copy now always wins over the pack's: what the list shows is what launches. The pack itself is left untouched, so reinstalling it still restores the original.
+- 🧹 **No more leftover duplicate folder after a mod update.** When a new release renamed its folder, the old one used to stay behind and the launcher could pick the wrong one. The stale copy is now removed.
+
+**Mod packs (.rickpack)**
+- 🔢 **Installing the same pack again no longer damages the profile you already built.** The launcher used to quietly rebuild the same mod folder and add a second profile with an identical name — there was no way to tell them apart. It now asks: **install another copy** (its own "… 2" profile and its own mod folder, the existing one untouched) or **reinstall over it** (the old profile of this pack and its mods are deleted). Copies never interfere and may hold different versions of the same mods. An already-installed pack is recognised by its name too, so a re-export that changed the pack's internal id is still spotted as the same pack.
+- 👀 **You can see which mod is being installed right now.** The current mod is outlined, the list scrolls to it, and the footer reads "Installing: name — mod 7 of 19". Each mod now shows its author too.
+- ⚡ **Installing a pack is noticeably faster.** The built-in browser used to restart and reload the Nexus page from scratch before every single mod — ten long pauses for a ten-mod pack. One window is now shared across the whole pack. A false alarm is gone too: a slowly loading page is no longer treated as stuck and pointlessly reloaded.
+- 🔑 **Settings now show that your Nexus login actually works.** It used to be blank, or claim "signed in" months after the session had expired. It now shows the account name (when it can be detected) and the date the session was last confirmed by a real Nexus page, and the flag clears itself as soon as a signed-out page is seen.
+- 🔑 **Installing no longer hangs when you're not signed in to Nexus.** The launcher sometimes mistook a signed-out visitor for a signed-in one and silently waited for a download button that guests never get. Sign-in is now detected correctly, and if something does go wrong the login window appears right away instead of after ten minutes of silence.
+- 🧩 **Fixed the install hanging on certain mods (Mod Configuration Menu and the like).** Nexus now hands some files back through a new-style link — no extension, from a new CDN. The launcher didn't recognise it and got stuck on a mod like MCM, spinning uselessly for up to ten minutes. Those links now download normally.
+- 📡 **You can see what the built-in browser is doing while it downloads.** Instead of a frozen "Downloading via browser…", the mod row now moves through stages: "Getting the file link…", "Downloading the file…", "Checking Nexus…". And if the file still fails, the install no longer hangs forever — the mod is honestly flagged and the launcher moves on.
+
+**Profiles**
+- 👯 **Cloning a profile now has progress, detail and a Cancel button.** A clone is made with all its saves, settings and mods and can be tens of gigabytes — before, only a status line showed during the copy and it looked like "cloning doesn't work". A window now shows a progress bar and speed, and the list shows what's being copied right now (saves, settings, then each mod in turn). **Cancel** removes the half-finished copy, so no junk is left behind. Clicking "Clone" again no longer starts a second clone at the same time.
+- 🔢 **Correct mod count when deleting a profile.** The delete confirmation showed an inflated number (e.g. "19 mods" for a 16-mod profile) — updated mods were counted twice: the copy in the profile and the original in the pack. It now counts unique mods.
+- 🧹 **The launcher tidies up "orphaned" mod copies on its own.** Interrupted clones and deleted profiles could leave full copies of mod lists on disk that nothing references any more (one tester had piled up nearly 60 GB). Now a profile's own mod folder is removed as soon as the profile is deleted, and on startup the launcher clears any orphaned copies — carefully: if the profile list can't be read, it touches nothing.
+
+**Interface**
+- ✨ **The "Update" button catches your eye.** When an update is found, the button now gently shimmers with a golden glow and pulses a little — hard to miss.
+- 🐢 **A slow Nexus download no longer looks like a freeze.** Nexus caps free accounts at roughly 1–2 MB/s. When a download steadily sits at that ceiling the launcher says so — in the download window and in the pack-install window. While the speed is normal, no note appears.
+- 📐 **The launcher window can no longer be squashed to a sliver.** Dragging an edge shrank it down to almost one pixel — the minimum size was being ignored (the "maximize to the work area" fix had disabled it). The minimum is enforced again, including on scaled displays. The built-in browser window got a minimum size too.
+
+**Under the hood**
+- 🛡 **Many small reliability fixes from a code audit.** Downloads can no longer silently hang forever; an interrupted download won't be appended onto the wrong file; reinstalling a pack won't install an old cached version of a mod; and an archive that isn't a mod is honestly flagged as an error instead of a fake success. These are all internal — invisible day to day, but they make things steadier.
+
+**Launcher updates**
+- 📜 **The "update available" window now shows everything you missed.** The changelog is read from the history file (GitHub first, our backup server when GitHub is unreachable) and lists **every version released after yours**, not just the newest one. Five versions behind? You'll see all five, with a scrollbar.
+
 ## 1.1.0
 
 A big round of fixes after 1.0.8 — straight from your reports.
