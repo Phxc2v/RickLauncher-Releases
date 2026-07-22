@@ -1,52 +1,75 @@
 # RickLauncher
 
-Лаунчер для **Mount & Blade II: Bannerlord** — одно место, чтобы запускать несколько версий игры (1.2, 1.3, 1.4.5 …), каждую с несколькими наборами модов («сборками»), с раздельными сейвами, конфигами и шейдерами.
+A launcher for **Mount & Blade II: Bannerlord** — one place to run several game versions (1.2, 1.3, 1.4.5 …), each with several mod sets (“packs”), with separate saves, configs and shaders.
 
-Версия: **1.1.0** · что нового — в `CHANGELOG.ru.md`.
+**Latest version: 1.1.3.5** · [⬇ Download the latest release](https://github.com/Phxc2v/RickLauncher-Releases/releases/latest) · [English](#english) · [Русский](#русский)
 
-## Возможности
-- Поиск установленных игр на дисках + добавление вручную.
-- Дерево **игра → сборки**: у каждой игры есть «Native» (чистая игра) и свои наборы модов.
-- **Перенос данных из игры:** при первом обнаружении игры (или вручную через меню профиля) лаунчер подтягивает в профиль ваши сейвы, настройки модов (MCM) и реальный список включённых модов с порядком — чтобы можно было сразу продолжить игру. Графику и engine-настройки импорт не трогает (чтобы не сломать рендер/шейдеры).
-- **Подсказка про видеокарту:** на гибридных ноутбуках, если игра настроена на слабую встроенную видеокарту, лаунчер перед запуском/сборкой шейдеров предложит переключиться на дискретную.
-- Управление модами: вкл/выкл, **порядок загрузки** (критично для Bannerlord), авто-порядок по зависимостям, проверка зависимостей и конфликтов.
-- **Установка модов** из архива, папки или по ссылке (GitHub/ModDB/прямая); авто-докачка зависимостей (Harmony/ButterLib/UIExtenderEx/MCM) с GitHub. Если мод уже есть на диске (другой профиль, папка игры, Steam Workshop) — не качается заново, а добавляется, причём берётся **самая новая версия по номеру**.
-- **Рекомендуемые моды:** кнопка в профиле — рекомендуемые моды (Crash Doctor, RTS Camera Universal, русский перевод TOR, Lore-Hardcore) ставятся в один клик. Показываются только подходящие сборке и ещё не установленные; ничего не навязывается, у каждого есть ссылка «Читать».
-- **Сборки модов `.rickpack`** — поделиться готовым набором модов одним файлом; отдельный редактор сборок (`RickPackEditor.exe`). Сборку можно **создать прямо из профиля** (меню профиля → «Создать сборку из профиля»): лаунчер подставит ссылки на моды, которые запомнил при установке. Готовые сборки идут вместе с лаунчером (папка `Packs`) — кнопка «Установить сборку» открывает её сразу.
-- **Полная автономность:** добавленные моды хранятся в каталоге лаунчера и подключаются в игру только на время запуска — папка игры и существующие моды/настройки игрока не меняются. После закрытия лаунчера всё запускается «как раньше».
-- **Изоляция** сейвов и настроек модов **по профилю**, шейдеров — по версии.
-- **Языки интерфейса:** русский и английский (можно добавить свой — файлы в папке `Lang`). Выбор языка — в настройках, применяется сразу.
-- **Автообновление:** при запуске лаунчер проверяет наличие новой версии и обновляется в один клик. Сначала с GitHub, а если он недоступен (например, заблокирован) — с нашего запасного сервера (то же и для наших модов). Переключатель «Скачивать с GitHub» — в настройках.
-- Скины оформления (Calradia, Cinematic), экспорт/импорт всех настроек (`.rlbak`).
-- Подсказка с описанием мода при наведении (из README мода, а если его нет — описание подтягивается с GitHub/Nexus при установке по ссылке или из сборки).
-- **Сборка шейдеров TOR** заранее, с прогресс-баром и временем до конца (кнопка «🧱 Собрать шейдеры»).
+> This repository hosts the **public releases** of RickLauncher (the app itself + changelog). The source code lives in a separate private repository.
 
-## Как пользоваться
-1. Запустите `RickLauncher.exe`.
-2. При первом запуске согласитесь на поиск игр (или добавьте папку игры вручную через «＋»).
-3. Выберите игру и сборку слева, при необходимости нажмите «🧩 Настроить моды».
-4. Нажмите **«ИГРАТЬ»**.
+---
 
-## Удаление модов
-Лаунчер различает, **кто установил мод**, и удаляет по-разному — чтобы никогда случайно не стереть чужие файлы:
+## English
 
-- **Моды, добавленные через лаунчер** (через «Добавить мод» из архива/папки/ссылки или поставленные `.rickpack`-сборкой) хранятся в каталоге лаунчера, отдельной копией для каждого профиля. При удалении такого мода из сборки он **физически стирается с диска** — но только копия этой сборки; другие сборки и клоны сохраняют свои копии.
-- **Моды, лежащие в папке игры `Modules\`** (например Fast Mode, Birth and Aging Options — их положили вручную или они пришли с репаком) и моды Steam Workshop считаются «родными» для игры. При удалении из сборки они **только скрываются** из неё, файлы на диске остаются нетронутыми — лаунчер никогда не удаляет то, что он не устанавливал.
-- **Официальные модули** (Native, SandBox, StoryMode и т.п.) не трогаются вообще.
+### What it is
+RickLauncher keeps your Bannerlord setups apart: one tree of **game → packs**, where every game version has a clean “Native” profile and its own mod sets, each with isolated saves, mod settings (MCM) and shaders.
 
-Кнопка удаления сама выбирает поведение и показывает соответствующее подтверждение — «Удалить с диска» либо «Убрать из сборки». Скрытый мод можно вернуть, снова добавив его в сборку.
+### Download & run
+1. Download `RickLauncher-v1.1.3.5.zip` from the [latest release](https://github.com/Phxc2v/RickLauncher-Releases/releases/latest) and unpack it anywhere.
+2. Run `RickLauncher.exe` (no .NET install needed — the build is self-contained).
+3. Let it find your installed games (or add a game folder via “＋”), pick a game and pack, then press **PLAY**.
 
-**Удаление профиля.** Если в профиле есть свои (добавленные через лаунчер) моды, лаунчер предложит выбор: «Удалить профиль и моды» (сотрёт их с диска, кроме тех, что используются другими профилями) или «Только профиль» (моды останутся на диске — повторная установка той же сборки будет мгновенной, без повторной загрузки).
+### Features
+- **Multiple game versions and mod packs** side by side, each fully isolated (saves, MCM, shaders).
+- **Import from the game:** pulls your existing saves, mod settings and enabled-mod order into a profile so you can continue right away.
+- **Mod management:** enable/disable, load order, auto-ordering by dependencies, conflict checks.
+- **Install mods** from an archive, folder or link (GitHub/ModDB/Nexus/direct), with automatic dependency download (Harmony/ButterLib/UIExtenderEx/MCM). Already-on-disk copies (other profiles, game folder, Steam Workshop) are reused, newest version first.
+- **Mod updates:** the launcher compares versions and flags “↑ new version” when a newer copy exists on disk or a new release is published online (GitHub, mirror fallback), with a one-click “Update mods”.
+- **`.rickpack` mod packs** — share a ready mod set as a single file; build one from a profile; a separate `RickPackEditor.exe` is bundled.
+- **Fully non-invasive:** added mods live in the launcher’s own folder and are linked into the game only while it runs — your game folder and existing setup stay untouched.
+- **Pre-build TOR shaders** ahead of time, with a progress bar.
+- **Auto-update:** checks for a new version on launch — GitHub first, our backup server when GitHub is unreachable.
+- **Interface languages:** English and Russian (add your own via the `Lang` folder).
 
-## Требования
-- Windows 10/11 (64-бит). Установленный .NET **не нужен** — сборка автономная.
+### Requirements
+- Windows 10/11 (64-bit). **No .NET install required** — the build is self-contained.
+- An installed copy of Bannerlord.
+
+### For users in Russia
+GitHub is often blocked in Russia, so the launcher also self-updates from a **backup mirror** automatically. Just run the app — it falls back to the mirror on its own.
+
+### Changelog
+Full history: [CHANGELOG.en.md](CHANGELOG.en.md) · [CHANGELOG.ru.md](CHANGELOG.ru.md).
+
+---
+
+## Русский
+
+### Что это
+RickLauncher держит ваши сборки Bannerlord раздельно: одно дерево **игра → сборки**, где у каждой версии игры есть чистый профиль «Native» и свои наборы модов, каждый со своими сейвами, настройками модов (MCM) и шейдерами.
+
+### Скачать и запустить
+1. Скачайте `RickLauncher-v1.1.3.5.zip` из [последнего релиза](https://github.com/Phxc2v/RickLauncher-Releases/releases/latest) и распакуйте в любую папку.
+2. Запустите `RickLauncher.exe` (устанавливать .NET **не нужно** — сборка автономная).
+3. Дайте найти установленные игры (или добавьте папку игры через «＋»), выберите игру и сборку и нажмите **«ИГРАТЬ»**.
+
+### Возможности
+- **Несколько версий игры и сборок модов** рядом, каждая полностью изолирована (сейвы, MCM, шейдеры).
+- **Перенос данных из игры:** подтягивает в профиль ваши сейвы, настройки модов и список включённых модов с порядком — чтобы сразу продолжить игру.
+- **Управление модами:** вкл/выкл, порядок загрузки, авто-порядок по зависимостям, проверка конфликтов.
+- **Установка модов** из архива, папки или по ссылке (GitHub/ModDB/Nexus/прямая), с авто-докачкой зависимостей (Harmony/ButterLib/UIExtenderEx/MCM). Копии, уже лежащие на диске (другой профиль, папка игры, Steam Workshop), переиспользуются — берётся самая новая версия.
+- **Обновления модов:** лаунчер сверяет версии и помечает «↑ новая версия», когда на диске или онлайн (GitHub, запасной сервер) есть копия новее, и предлагает кнопку «Обновить моды».
+- **Сборки модов `.rickpack`** — поделиться готовым набором модов одним файлом; сборку можно создать прямо из профиля; отдельный редактор `RickPackEditor.exe` идёт в комплекте.
+- **Полная автономность:** добавленные моды хранятся в папке лаунчера и подключаются в игру только на время запуска — папка игры и существующие настройки не меняются.
+- **Сборка шейдеров TOR** заранее, с прогресс-баром.
+- **Автообновление:** при запуске проверяет новую версию — сначала GitHub, при недоступности — наш запасной сервер.
+- **Языки интерфейса:** русский и английский (можно добавить свой — файлы в папке `Lang`).
+
+### Требования
+- Windows 10/11 (64-бит). Устанавливать .NET **не нужно** — сборка автономная.
 - Установленная игра Bannerlord.
 
-## Данные и портативность
-- Все данные лаунчера лежат в папке **`RickLauncherData`** рядом с `RickLauncher.exe`. Можно перенести лаунчер вместе с этой папкой.
+### Для пользователей из России
+GitHub в России часто заблокирован, поэтому лаунчер умеет автообновляться с **запасного зеркала** сам. Просто запустите приложение — при недоступности GitHub оно переключится на зеркало автоматически.
 
-## Важно про OneDrive
-Если папка «Документы» перенаправлена в OneDrive, изоляция сейвов для неё **отключается** (чтобы не повредить облачные файлы) — лаунчер предупредит. Рекомендуется вынести «Документы» из OneDrive.
-
-## Обратная связь
-Сообщайте о проблемах: что делали, что ожидали, что произошло. Приложите файлы из `RickLauncherData`, если возможно.
+### Что нового
+Полная история изменений: [CHANGELOG.ru.md](CHANGELOG.ru.md) · [CHANGELOG.en.md](CHANGELOG.en.md).
