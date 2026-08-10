@@ -4,11 +4,27 @@
 
 ## 1.3.1
 
-- 🧷 **A second copy of the launcher no longer takes the first one's data.** With two launchers on one PC — say a portable copy and an installed one — whichever started next pulled the other's games, profiles, saves and mod library across to itself. Nothing was lost, but the first copy suddenly looked empty and the second showed "someone else's" games. Each launcher now marks its own storage, and another one's can only be adopted if that installation is genuinely gone.
+**Before launch: mods are checked**
+- 🔍 **The launcher now checks whether your mods can load, before the game starts.** Bannerlord loads the code of every mod before a single one runs, so one mod that cannot load takes the game down at startup — before the main menu, with no crash file and no hint at who is to blame. Before a launch (and before a shader build) the launcher now looks at the mod files itself and says what is wrong in plain words: a library is missing, and which mod provides it; the library is there but the mod holding it is switched off; a file the mod declares isn't on disk; Windows has blocked a file as downloaded from the internet; the archive finished half-downloaded and the file is damaged; the mod is 32-bit while the game is 64-bit; the mod was built for a different .NET; the installed library is older than the mod needs. The check isn't perfect and can be wrong, so the decision stays yours — "Launch anyway" sits right next to it.
 
+**Downloads**
+- ⚡ **Files download over several connections — noticeably faster.** Throttling is applied to each connection separately, so eight at once move several times what one does: measured 0.12 MB/s on a single stream against 0.42 MB/s on eight, with a healthy link and a healthy server. If the server can't serve a file in parts, or the file is small, it falls back to an ordinary download. The number of connections is adjustable, and one turns multi-connection downloading off.
+- ↩️ **An interrupted download resumes instead of starting over** — and the resume is tied to its source, so bytes from different links can never be mixed.
+
+**Shaders**
+- 🧱 **A shader build no longer dies for want of Harmony.** What needs building are the mods with graphics — but a graphics mod is also code, and that code needs its libraries. Picking "only mods with artwork" dropped Harmony, ButterLib and UIExtenderEx; the game then started without them, every one of those mods failed to load, everything closed half a minute later, and the build ended with zero shaders compiled. The installed frameworks — and whatever the visual mods declare as required — now load alongside them.
+- 🪟 **One window before a build instead of two.** The note about the build temporarily lowering shader quality moved into the memory-check window. It is information, not a second question, and the "Start" button underneath is the same answer either way.
+
+**Crash diagnosis**
+- 🧠 **The launcher recognises more causes of crashes.** The rule base grew considerably — both for the typical failures in mod code and for conflicts between specific mods.
+- 📋 **A crash report now carries the exact list of mods that were running.** It used to be written only on the normal launch path, so a crash during a shader build got the list from whatever was played before it — which is to say, a false one. Every run writes it now, and the report says which run it describes.
+- 🛡️ **The in-game interceptor got steadier** at the boundary between the game's code and mod code — the place where the interception itself could previously take the game down with it.
+
+**The application**
 - 📦 **There is an installer now.** The launcher used to exist only as an archive: download it, find it, unpack it, don't lose the folder. GitHub releases now carry `RickLauncher-Setup.exe` next to the archive — a normal install with shortcuts and an "Apps & features" entry. It never asks for administrator rights: it installs into your own user folder, because all launcher data (profiles, saves, mod library) lives next to the program and has to stay writable — otherwise automatic updates would break. The archive stays for portable installs, and it is still what the launcher downloads when it updates itself. Uninstalling asks whether to delete your data, and **keeps** it by default.
-
 - ♥ **A "Donate" button.** The launcher is free and stays free, but release hosting and the download mirror cost money. The button sits in the top bar next to the version and in the menu — nothing pops up over your game. The window offers two routes to the same page: a normal web page in your browser (no Telegram needed, pay by card) and the same page inside Telegram. A QR code is there too, so you can point your phone's camera at it and pay from the phone. The address can be copied and checked: the page always opens in your own browser, never inside the launcher.
+- 🔐 **Updates verify the signature when downloading from the mirror too** — previously the signature was only checked for downloads from GitHub.
+- 🧷 **A second copy of the launcher no longer takes the first one's data.** With two launchers on one PC — say a portable copy and an installed one — whichever started next pulled the other's games, profiles, saves and mod library across to itself. Nothing was lost, but the first copy suddenly looked empty and the second showed "someone else's" games. Each launcher now marks its own storage, and another one's can only be adopted if that installation is genuinely gone.
 
 ## 1.3.0
 
