@@ -2,7 +2,9 @@
 
 > Plain-language notes on what changed in each version.
 
-## 1.3.1
+## 1.3.2
+
+- 🚪 **The first run no longer shows things you cannot use yet.** Until a game had been found, the screen still offered a huge "PLAY" button, "Configure mods" and the line "clean game — base modules only" — all of which describe a selected build, and there was nothing to select. An empty launcher now shows only what makes sense at that moment: an explanation and the "Find games" / "Add manually" buttons, right on the main screen instead of buried in a menu.
 
 **Before launch: mods are checked**
 - 🔍 **The launcher now checks whether your mods can load, before the game starts.** Bannerlord loads the code of every mod before a single one runs, so one mod that cannot load takes the game down at startup — before the main menu, with no crash file and no hint at who is to blame. Before a launch (and before a shader build) the launcher now looks at the mod files itself and says what is wrong in plain words: a library is missing, and which mod provides it; the library is there but the mod holding it is switched off; a file the mod declares isn't on disk; Windows has blocked a file as downloaded from the internet; the archive finished half-downloaded and the file is damaged; the mod is 32-bit while the game is 64-bit; the mod was built for a different .NET; the installed library is older than the mod needs. The check isn't perfect and can be wrong, so the decision stays yours — "Launch anyway" sits right next to it.
