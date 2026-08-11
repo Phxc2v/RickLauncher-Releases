@@ -2,6 +2,21 @@
 
 > Plain-language notes on what changed in each version.
 
+## 1.3.3
+
+**Mods**
+- ⬆️ **A mod update now shows up even when the mod came from a pack or from the game folder.** The launcher only offered updates for mods downloaded into the profile itself. So a profile built on "Vanilla+" kept loading Crash Doctor 1.8.4.4 out of the pack's storage while 1.9.0.1 sat in that same game's folder — and no update badge ever appeared. Now it does.
+- 🧷 **Such an update doesn't disturb your other builds.** The new version is installed into your profile only, where it overrides the shared copy; the pack and the game folder are left untouched, so other profiles using the same mod keep working exactly as before. Steam Workshop mods are still left alone — Steam manages those.
+
+**Crash analysis**
+- 🧠 **Four more crash causes the launcher recognises** — a town rebelling while its culture has no rebel-lord templates; a crash right after a battle while removing a prisoner already gone from the roster; a daily error from a rebel clan left behind by a mod; and a day-change crash at a child's birth when a parent has no body data. The old "outdated MCM" case is described in plain words now too.
+
+**Shaders**
+- 🧩 **The shader build no longer switches on mods you switched off.** It took everything sitting in the game's folder — including the mods you had deliberately disabled because they break the game. One of you had parts of The Old Realms in that folder without its core module: playing was fine (they were off), but the build turned them back on and the game died thirteen seconds in, every single time. The build now uses the graphics mods enabled in at least one build of that installation — the shader cache is still shared across the whole game version, but what nobody uses stays out of it.
+- 🧷 **A mod missing something it requires is left out of the build** — and the launcher writes down which mod and what it was missing. Before, such a mod was quietly loaded without half of itself, and the game crashed with nothing anywhere to say why.
+- 🔁 **If the build's mod set won't start the game at all, the launcher retries with your normal mod set** — the one you play with. Building slightly less beats building nothing.
+- 💬 **A plain explanation instead of "the game crashed".** When the game closes before the build even begins, it isn't the shaders and it isn't memory — the mod set simply doesn't start. That's what it says now, instead of advising you to free memory and delete a cache that was never the problem.
+
 ## 1.3.2
 
 - 🚪 **The first run no longer shows things you cannot use yet.** Until a game had been found, the screen still offered a huge "PLAY" button, "Configure mods" and the line "clean game — base modules only" — all of which describe a selected build, and there was nothing to select. An empty launcher now shows only what makes sense at that moment: an explanation and the "Find games" / "Add manually" buttons, right on the main screen instead of buried in a menu.
