@@ -2,6 +2,21 @@
 
 > Plain-language notes on what changed in each version.
 
+## 1.3.4
+
+**Shaders**
+- 🎯 **Shaders are no longer built on the integrated graphics chip.** On a laptop with two GPUs the game could start on the weak built-in one — and the cache was compiled for that. There is no way to check this from outside: Windows numbers the adapters per program, so "adapter 0" means different hardware to the launcher and to the game. The order is now measured inside the game itself, the launcher corrects the setting before a build, and if the game still comes up on the integrated chip the build stops within seconds, switches to the real card and starts again — instead of an hour spent for nothing.
+- 💾 **When the game cannot save shaders, the launcher says so at once.** The engine will happily compile shaders it is unable to write to disk: it logs one line about it and carries on as if nothing happened. From the outside that looked perfect — the build ran its full course, the cache stayed empty, the launcher offered to build again, and round it went. The folder is now verified before a build and the game is listened to during it: the build stops and says what to check (permissions on `C:\ProgramData\Mount and Blade II Bannerlord`, antivirus).
+- 🧱 **Deleting the cache no longer removes the folder the game writes into.** The game does not create it, so after a cleanup the next build had nowhere to save. It is restored immediately — and before every launch as well.
+
+**Crash diagnosis**
+- 🧠 **Two more crash causes the launcher recognises** — "shaders compile but are never saved", and a broken battle stored in a save (the game dies a couple of seconds after the map loads; only an earlier save helps, rebuilding shaders cannot, and it now says so).
+- 📎 **Two things the crash report was missing:** the shader build's own log (so you can see whether it compiled anything at all) and the GPU list as the game sees it.
+- 🧩 **A clear log line when a mod couldn't be composed.** It used to say "the mod won't load", while the game happily loaded the copy sitting in its own folder — leaving no clue why an old version was running. It now says which of the two happened.
+
+**Other**
+- 📰 **The "What's new" window shows every version again, not just one.** A line-ending detail in the file left the launcher seeing only the last section.
+
 ## 1.3.3
 
 **Mods**
