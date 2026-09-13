@@ -1,220 +1,105 @@
-# What's new in RickLauncher
+﻿# What's new in RickLauncher
 
 > Plain-language notes on what changed in each version.
 
+## Unreleased
+
 ## 2.4.0
 
-The biggest update so far. The heart of it: the launcher now carries **its own reference covering every
-Bannerlord mod**, and almost everything else rests on it — the launcher knows what mod you are installing,
-whether it runs on your version of the game, what it needs alongside, what it will fall out with and where
-to get it. Only the most important things are below. The full list (more than five hundred entries) is in
-`CHANGELOG-2.4.0-full.en.md` next to this file.
+The biggest update so far. The heart of it: the launcher now carries **its own reference covering every Bannerlord mod**, and almost everything else rests on it — the launcher knows what mod you are installing, whether it runs on your version of the game, what it needs alongside, what it will fall out with and where to get it. Only the most important things are below. The full list (more than five hundred entries) is in `CHANGELOG-2.4.0-full.en.md` next to this file.
 
-### The mod reference
+**The mod reference**
 
-- 📚 **More than nine thousand mods in one base that works offline.** What a mod does, which game versions
-  it runs on, what it needs alongside, what it clashes with, where to get it, who actually released it.
-  Descriptions in all six launcher languages. The base downloads separately from the launcher: on first run
-  it asks ("Download 332 MB"), and when a newer one comes out it shows a "New base available" card with an
-  "Update" button. Launcher updates became two and a half times lighter because of it.
-- 📖 **Every mod has a card** — the **ⓘ** button in the mod list. At the top: name, author, pictures from
-  the mod's page and a short answer in coloured badges: will it run on your game, what it clashes with,
-  what it lacks. Below, tabs: description, game versions, clashes, dependencies, files, what the mod adds
-  to the game, where to download, what others made for it, what changed in it. Any mod named on a card
-  opens as its own card beside it.
-- 🔎 **Search for mods you do not have yet** — "Add mod → Find a mod in the reference…" and a button on
-  the main screen. It understands all six languages: type "garrison" or "战斗" and mods about that are
-  found even though they are named in English. Each result shows what the mod is, whether it suits your
-  game, whether you already have it, how many downloads it has, and which entry is the original and which
-  a copy or a translation.
-- 🏷️ **Under a mod's English name — what it does, in your language.** Everywhere a mod is named: in
-  search, on the card, in the profile's mod list, in updates, translations and the pack install window.
-- 🧪 **What we checked ourselves is written on a red badge over the author's description** — only what
-  we measured, and only what the mod does to the game.
+- 📚 **More than nine thousand mods in one base that works offline.** What a mod does, which game versions it runs on, what it needs alongside, what it clashes with, where to get it, who actually released it. Descriptions in all six launcher languages. The base downloads separately from the launcher: on first run it asks ("Download 332 MB"), and when a newer one comes out it shows a "New base available" card with an "Update" button. Launcher updates became two and a half times lighter because of it.
+- 📖 **Every mod has a card** — the **ⓘ** button in the mod list. At the top: name, author, pictures from the mod's page and a short answer in coloured badges: will it run on your game, what it clashes with, what it lacks. Below, tabs: description, game versions, clashes, dependencies, files, what the mod adds to the game, where to download, what others made for it, what changed in it. Any mod named on a card opens as its own card beside it.
+- 🔎 **Search for mods you do not have yet** — "Add mod → Find a mod in the reference…" and a button on the main screen. It understands all six languages: type "garrison" or "战斗" and mods about that are found even though they are named in English. Each result shows what the mod is, whether it suits your game, whether you already have it, how many downloads it has, and which entry is the original and which a copy or a translation.
+- 🏷️ **Under a mod's English name — what it does, in your language.** Everywhere a mod is named: in search, on the card, in the profile's mod list, in updates, translations and the pack install window.
+- 🧪 **What we checked ourselves is written on a red badge over the author's description** — only what we measured, and only what the mod does to the game.
 
-### Which build of a mod your game needs
+**Which build of a mod your game needs**
 
-- 🎯 **The build that suits your game is installed, not the newest one.** For many mods the newest build
-  is made for the newest game and simply does not start on an older one — silently, with no message at
-  all. On Nexus the right build is usually hidden in the collapsed old-files section; the launcher leads
-  straight to it and explains why it offers something other than the newest. If no build exists for your
-  game at all, a neighbouring one is offered — with a warning.
-- 🛑 **The launcher will not install a mod built for a newer game — under any circumstances.** The question
-  is asked on every path: an update, a pack install, a set from an RLink, a manual install, adding an
-  already-downloaded mod and the pre-launch check. A profile on game 1.2 used to be offered a Harmony
-  update built for 1.3, after which no mod works at all.
-- 🟡 **Four answers instead of two:** works; loads but one feature will fail; in question; will not run.
-  Red is used only for what will certainly not run. And you can see **when** a mod will fall over — at
-  start, on loading a save, in battle, on the campaign map — not only why.
-- 🎮 **The check knows six game versions: 1.2.10, 1.3.15, 1.4.5, 1.4.7, 1.4.8 and 1.5.1** — and answers
-  on any of them without internet.
-- 🚦 **Clashes and incompatibilities are visible right in the mod list**, one line per clash with what it
-  is about. If somebody released a patch for exactly this pair, it is named.
+- 🎯 **The build that suits your game is installed, not the newest one.** For many mods the newest build is made for the newest game and simply does not start on an older one — silently, with no message at all. On Nexus the right build is usually hidden in the collapsed old-files section; the launcher leads straight to it and explains why it offers something other than the newest. If no build exists for your game at all, a neighbouring one is offered — with a warning.
+- 🛑 **The launcher will not install a mod built for a newer game — under any circumstances.** The question is asked on every path: an update, a pack install, a set from an RLink, a manual install, adding an already-downloaded mod and the pre-launch check. A profile on game 1.2 used to be offered a Harmony update built for 1.3, after which no mod works at all.
+- 🟡 **Four answers instead of two:** works; loads but one feature will fail; in question; will not run. Red is used only for what will certainly not run. And you can see **when** a mod will fall over — at start, on loading a save, in battle, on the campaign map — not only why.
+- 🎮 **The check knows six game versions: 1.2.10, 1.3.15, 1.4.5, 1.4.7, 1.4.8 and 1.5.1** — and answers on any of them without internet.
+- 🚦 **Clashes and incompatibilities are visible right in the mod list**, one line per clash with what it is about. If somebody released a patch for exactly this pair, it is named.
 
-### Installing mods
+**Installing mods**
 
-- 🧺 **Mods are gathered into a list and installed together.** Press "Install" as many times as you like —
-  in search, on a card, in its dependency and add-on lists; the selection is highlighted green in every
-  window at once. The list installs in dependency order and nothing is downloaded twice.
-- 🤫 **Two mods or more install without a single question.** Every "needs Harmony — download it?", "clashes
-  with yours — install anyway?" is answered in favour of installing, and the questions themselves are
-  shown afterwards, all together, in one "Installation complete" window. Install one mod and it asks as
-  before.
-- 🧩 **Missing Harmony, MCM, ButterLib or anything else — installed with one button**, and exactly the
-  build your game needs. The launcher asks not only a mod's manifest but its code too: libraries a mod
-  "forgot" to declare are found as well. At the bottom of the mods window — "Get what's missing (N)".
-- ⬇️ **The launcher chooses where to download from** — GitHub, Steam Workshop, Nexus, ModDB. First
-  whatever needs no account, then the site you are already signed in to. A dead link does not break the
-  install — the next address is taken. A mod that is not published as a file of its own is found inside
-  the archive that carries it, and only the needed part is downloaded.
-- 🎮 **Steam Workshop mods download inside the launcher** — no browser, no wrestling with archives. Sign
-  in to Steam once, by QR code from your phone or with login and password; the password is never stored.
-  Downloads are noticeably faster, and a Steam server refusing no longer kills a download halfway.
-- ⚡ **Nexus mods download several times faster with a premium account** — eight streams at once. A free
-  Nexus key helps too: the launcher works out which file is needed and opens that one. The Nexus sign-in
-  no longer expires every two weeks, and the launcher tells you whether your key is premium or free.
-- 🗿 **ModDB mods finally install** — the launcher walks the site's pages to the file itself, and an
-  interrupted download resumes where it stopped.
-- 🚀 **Large archives (7z, RAR) unpack several times faster**, with 7-Zip or without it. A mod made of
-  several required files is installed whole; when an archive holds several variants of a mod, the right
-  one is installed.
-- ⏳ **The install window can be minimised while you do something else** — even play on another profile.
-  It shows where the download comes from, its speed and what is left. "Cancel" means the same thing
-  everywhere — "stop": it stops the whole list, not one file, and is never counted as an error.
-- 📋 **The launcher remembers which files make up a mod and notices when they are gone.** A missing file
-  means a "Mod installed only in part" notice naming the mod and the file before launch, not a crash half
-  an hour in. The **"Reinstall the mod"** button installs it afresh from the recorded source; the old copy
-  stays as a backup.
-- 🔢 **On the left of every mod — its install number ("#27")**, the date on hover. Mods the launcher did
-  not install have no number.
+- 🧺 **Mods are gathered into a list and installed together.** Press "Install" as many times as you like — in search, on a card, in its dependency and add-on lists; the selection is highlighted green in every window at once. The list installs in dependency order and nothing is downloaded twice.
+- 🤫 **Two mods or more install without a single question.** Every "needs Harmony — download it?", "clashes with yours — install anyway?" is answered in favour of installing, and the questions themselves are shown afterwards, all together, in one "Installation complete" window. Install one mod and it asks as before.
+- 🧩 **Missing Harmony, MCM, ButterLib or anything else — installed with one button**, and exactly the build your game needs. The launcher asks not only a mod's manifest but its code too: libraries a mod "forgot" to declare are found as well. At the bottom of the mods window — "Get what's missing (N)".
+- ⬇️ **The launcher chooses where to download from** — GitHub, Steam Workshop, Nexus, ModDB. First whatever needs no account, then the site you are already signed in to. A dead link does not break the install — the next address is taken. A mod that is not published as a file of its own is found inside the archive that carries it, and only the needed part is downloaded.
+- 🎮 **Steam Workshop mods download inside the launcher** — no browser, no wrestling with archives. Sign in to Steam once, by QR code from your phone or with login and password; the password is never stored. Downloads are noticeably faster, and a Steam server refusing no longer kills a download halfway.
+- ⚡ **Nexus mods download several times faster with a premium account** — eight streams at once. A free Nexus key helps too: the launcher works out which file is needed and opens that one. The Nexus sign-in no longer expires every two weeks, and the launcher tells you whether your key is premium or free.
+- 🗿 **ModDB mods finally install** — the launcher walks the site's pages to the file itself, and an interrupted download resumes where it stopped.
+- 🚀 **Large archives (7z, RAR) unpack several times faster**, with 7-Zip or without it. A mod made of several required files is installed whole; when an archive holds several variants of a mod, the right one is installed.
+- ⏳ **The install window can be minimised while you do something else** — even play on another profile. It shows where the download comes from, its speed and what is left. "Cancel" means the same thing everywhere — "stop": it stops the whole list, not one file, and is never counted as an error.
+- 📋 **The launcher remembers which files make up a mod and notices when they are gone.** A missing file means a "Mod installed only in part" notice naming the mod and the file before launch, not a crash half an hour in. The **"Reinstall the mod"** button installs it afresh from the recorded source; the old copy stays as a backup.
+- 🔢 **On the left of every mod — its install number ("#27")**, the date on hover. Mods the launcher did not install have no number.
 
-### The pre-launch check
+**The pre-launch check**
 
-- 🟢🔴 **A green or red bar beside mods — what changed since the game last worked.** The launcher
-  remembers which set of mods last reached the game itself and closed normally. If the game crashed after
-  that, everything that appeared or updated since the last good launch carries a red bar, and above the
-  list is a note with one button: "Switch these N off".
-- 🧰 **The pre-launch window now has something to press, not only something to read.** Missing mods and
-  libraries are listed in a column, each showing what it is and where it will come from — and a button
-  that fetches them all. A mod the launcher said "will not work" is no longer left switched on in silence.
-- ⚓ **A mod made for a part of the game you do not own (War Sails and the other expansions) is called
-  exactly that** — the launcher no longer looks for parts of the game itself online or offers to
-  "download" them.
-- 🧩 **The "will not run" verdict was lifted from 178 mods** — far fewer false red warnings, while the
-  libraries that really differ between game versions are checked precisely.
-- 🧯 **A foreign shader cache inside a mod** built for another game version brings the game down before the
-  main menu without a word. The launcher asks and removes only that — the engine builds its own again.
+- 🟢🔴 **A green or red bar beside mods — what changed since the game last worked.** The launcher remembers which set of mods last reached the game itself and closed normally. If the game crashed after that, everything that appeared or updated since the last good launch carries a red bar, and above the list is a note with one button: "Switch these N off".
+- 🧰 **The pre-launch window now has something to press, not only something to read.** Missing mods and libraries are listed in a column, each showing what it is and where it will come from — and a button that fetches them all. A mod the launcher said "will not work" is no longer left switched on in silence.
+- ⚓ **A mod made for a part of the game you do not own (War Sails and the other expansions) is called exactly that** — the launcher no longer looks for parts of the game itself online or offers to "download" them.
+- 🧩 **The "will not run" verdict was lifted from 178 mods** — far fewer false red warnings, while the libraries that really differ between game versions are checked precisely.
+- 🧯 **A foreign shader cache inside a mod** built for another game version brings the game down before the main menu without a word. The launcher asks and removes only that — the engine builds its own again.
 
-### Mod updates
+**Mod updates**
 
-- 🔄 **Updates are found at every source** — Nexus, GitHub, Steam Workshop, ModDB — and shown as soon as
-  you switch to a profile. The version is the one the source named; Workshop updates show a version, not
-  only a date. A build known not to work, or one below what is installed, is not offered.
-- 🔴 **An update no longer breaks a pack or doubles a mod.** It does not spawn a second folder, drop the
-  mod from the list or rename it after somebody else. The previous version is kept; rolling back is one
-  button.
+- 🔄 **Updates are found at every source** — Nexus, GitHub, Steam Workshop, ModDB — and shown as soon as you switch to a profile. The version is the one the source named; Workshop updates show a version, not only a date. A build known not to work, or one below what is installed, is not offered.
+- 🔴 **An update no longer breaks a pack or doubles a mod.** It does not spawn a second folder, drop the mod from the list or rename it after somebody else. The previous version is kept; rolling back is one button.
 - ⏹️ **"Cancel" stops the whole list of updates**, and a closed download window means "stop" too.
 
-### Mod translations
+**Mod translations**
 
-- 🌍 **The "Translations" button installs translations for all your mods at once** — the launcher works
-  out which of your mods have a translation into the launcher's language and offers a list with
-  checkboxes. They come out the same way, with one button. A translation that arrives as a mod of its
-  own is checked like a mod; one packed as "just an RU folder" is laid out in the right places. A
-  translation you added by hand is put into the mod for you.
-- 🛡️ **A translation cannot replace or rename the mod it translates.** A mod with a similar name is no
-  longer passed off as a translation, and a mod that carries its own translation is offered nothing.
-  There is a "do not offer a translation for this mod again" button.
+- 🌍 **The "Translations" button installs translations for all your mods at once** — the launcher works out which of your mods have a translation into the launcher's language and offers a list with checkboxes. They come out the same way, with one button. A translation that arrives as a mod of its own is checked like a mod; one packed as "just an RU folder" is laid out in the right places. A translation you added by hand is put into the mod for you.
+- 🛡️ **A translation cannot replace or rename the mod it translates.** A mod with a similar name is no longer passed off as a translation, and a mod that carries its own translation is offered nothing. There is a "do not offer a translation for this mod again" button.
 
-### A mod set as one line, and packs
+**A mod set as one line, and packs**
 
-- 🔗 **A mod set travels as one line — an RLink.** The profile menu has "Copy the mod set (RLink)": a short
-  text with every mod, its order, versions and translations goes to the clipboard. Drop it into a chat —
-  the other player gets a "Paste a mod set (RLink)" button, and the launcher assembles the same set:
-  downloads what is missing, enables what is already there and puts everything in the same order. Builds
-  are picked for THEIR game. Even a set of 150 mods fits in one message.
-- 📦 **Installing a pack — no stops, no questions.** The launcher checks whether the pack suits your game,
-  picks the right one of several installs, installs mods in the author's order and pulls no stray mods
-  into the profile. An interrupted install resumes rather than starting over; at the end there is a
-  summary window with an "Install log" button. About Nexus: a premium key downloads by itself, a free
-  account signs in through the browser, and a closed sign-in window is a question, not silence.
-- 🪄 **A pack made from your profile opens in the editor already filled in** — names, authors,
-  descriptions in every language, addresses and pictures come from the reference. A mod can have several
-  addresses, and there is a "Check links" button. The editor starts from the launcher's menu, and "Open
-  project…" lists the packs you worked on last.
+- 🔗 **A mod set travels as one line — an RLink.** The profile menu has "Copy the mod set (RLink)": a short text with every mod, its order, versions and translations goes to the clipboard. Drop it into a chat — the other player gets a "Paste a mod set (RLink)" button, and the launcher assembles the same set: downloads what is missing, enables what is already there and puts everything in the same order. Builds are picked for THEIR game. Even a set of 150 mods fits in one message.
+- 📦 **Installing a pack — no stops, no questions.** The launcher checks whether the pack suits your game, picks the right one of several installs, installs mods in the author's order and pulls no stray mods into the profile. An interrupted install resumes rather than starting over; at the end there is a summary window with an "Install log" button. About Nexus: a premium key downloads by itself, a free account signs in through the browser, and a closed sign-in window is a question, not silence.
+- 🪄 **A pack made from your profile opens in the editor already filled in** — names, authors, descriptions in every language, addresses and pictures come from the reference. A mod can have several addresses, and there is a "Check links" button. The editor starts from the launcher's menu, and "Open project…" lists the packs you worked on last.
 
-### Profiles, shaders, launching
+**Profiles, shaders, launching**
 
-- 🕘 **A "History" button in the mods window** — what the launcher did to this profile: what it installed,
-  updated, removed, which translation went where, what failed and why. Beside every reversible entry, an
-  undo button.
-- 🔍 **The mod list has a search box** — a line above the list filters it in place, by name and by
-  internal id.
-- 🔴 **Every profile has its own shaders** — built for its resolution, quality and mod list. When copying
-  a profile the launcher asks whether to copy them. You choose the shader quality when building.
-- 🖱️ **A desktop shortcut starts a profile straight into the game**, skipping the launcher window. The
-  launcher minimises to the taskbar, keeps the mods attached and puts everything back after exit.
-- 🖥️ **The game always runs on the powerful graphics card.** On a laptop with two of them the launcher
-  switches the game to the discrete one itself — before launch and before building shaders.
-- 🎯 **The game can no longer start the wrong copy of a mod** — with two folders on disk carrying the same
-  internal name, the choice is no longer the engine's.
-- 🔒 **While the launcher is touching mods the game cannot be started**, and one mod operation runs at a
-  time — the profile being installed into is closed for the duration.
+- 🕘 **A "History" button in the mods window** — what the launcher did to this profile: what it installed, updated, removed, which translation went where, what failed and why. Beside every reversible entry, an undo button.
+- 🔍 **The mod list has a search box** — a line above the list filters it in place, by name and by internal id.
+- 🔴 **Every profile has its own shaders** — built for its resolution, quality and mod list. When copying a profile the launcher asks whether to copy them. You choose the shader quality when building.
+- 🖱️ **A desktop shortcut starts a profile straight into the game**, skipping the launcher window. The launcher minimises to the taskbar, keeps the mods attached and puts everything back after exit.
+- 🖥️ **The game always runs on the powerful graphics card.** On a laptop with two of them the launcher switches the game to the discrete one itself — before launch and before building shaders.
+- 🎯 **The game can no longer start the wrong copy of a mod** — with two folders on disk carrying the same internal name, the choice is no longer the engine's.
+- 🔒 **While the launcher is touching mods the game cannot be started**, and one mod operation runs at a time — the profile being installed into is closed for the duration.
 
-### Crashes
+**Crashes**
 
-- ⏱️ **The launcher reports a crash at once, not a minute later** — "the game crashed, Windows is writing
-  the dump, the report opens as soon as it is done".
-- 🩺 **Crash diagnosis got sharper:** "Mod installed only in part" instead of "the mod's code failed", two
-  more campaign crashes are recognised by name, a clash comes with a suggested fix, and when no rule
-  matched the report shows what it found by itself. Crash details are in your language. The launcher no
-  longer frightens you with a game crash blamed on mods that were not in it.
+- ⏱️ **The launcher reports a crash at once, not a minute later** — "the game crashed, Windows is writing the dump, the report opens as soon as it is done".
+- 🩺 **Crash diagnosis got sharper:** "Mod installed only in part" instead of "the mod's code failed", two more campaign crashes are recognised by name, a clash comes with a suggested fix, and when no rule matched the report shows what it found by itself. Crash details are in your language. The launcher no longer frightens you with a game crash blamed on mods that were not in it.
 - 🔒 **Your Windows user name is gone from the reports.**
 
-### The mod magazine
+**The mod magazine**
 
-- 📖 **The launcher now carries a magazine about mods.** A new issue arrives as a card on the right of the
-  main screen: cover, number, date. It reads inside the launcher — with paging, zoom and printing — opens
-  at the page where you left it, and comes in the interface language. The PDF downloads only when you
-  press "Read"; mods from the issue open as launcher cards. The card can be put away until the next issue
-  or switched off for good.
+- 📖 **The launcher now carries a magazine about mods.** A new issue arrives as a card on the right of the main screen: cover, number, date. It reads inside the launcher — with paging, zoom and printing — opens at the page where you left it, and comes in the interface language. The PDF downloads only when you press "Read"; mods from the issue open as launcher cards. The card can be put away until the next issue or switched off for good.
 
-### Languages and looks
+**Languages and looks**
 
-- 🇫🇷 **French arrived** — the interface, the crash window, the pack editor and the whole manual with its
-  screenshots. Six languages now: Russian, English, French, Turkish, Chinese simplified and traditional. On
-  first run the launcher asks which one.
+- 🇫🇷 **French arrived** — the interface, the crash window, the pack editor and the whole manual with its screenshots. Six languages now: Russian, English, French, Turkish, Chinese simplified and traditional. On first run the launcher asks which one.
 - 🌲 **A new skin, "Verdant" — pine and moss.** A fourth pill in the title bar; the pack editor knows it too.
-- ⚙️ **Settings are laid out in sections:** "General", "Accounts", "Mods and reference", "Downloads",
-  "Launcher updates", "Data".
-- 🖥️ **The launcher fits a small screen and the window can be narrowed without anything falling apart.**
-  The profile header is shorter, the mod list hints that there is more below, long lines no longer break
-  mid-word, and a question always appears on top of the window you are working in.
-- 🔕 **The incompatibility breakdown no longer blocks the way to the game with a window** — the Play
-  button got its own "⚠" button, and the window opens by itself only when the game certainly will not
-  start.
-- 📖 **The manual grew:** the mod reference, search, the card, a mod set as one line, the Nexus account —
-  and it was re-shot in all six languages.
+- ⚙️ **Settings are laid out in sections:** "General", "Accounts", "Mods and reference", "Downloads", "Launcher updates", "Data".
+- 🖥️ **The launcher fits a small screen and the window can be narrowed without anything falling apart.** The profile header is shorter, the mod list hints that there is more below, long lines no longer break mid-word, and a question always appears on top of the window you are working in.
+- 🔕 **The incompatibility breakdown no longer blocks the way to the game with a window** — the Play button got its own "⚠" button, and the window opens by itself only when the game certainly will not start.
+- 📖 **The manual grew:** the mod reference, search, the card, a mod set as one line, the Nexus account — and it was re-shot in all six languages.
 
-### Data and reliability
+**Data and reliability**
 
-- 🔢 **The version window — click the version number in the title bar.** It shows which build is running
-  and which exist, and lets you install another — including going back to the previous one. Settings are
-  snapshotted and come back with the version.
-- 🗂️ **The data store can be chosen, moved or attached.** Moved the launcher's folder? It lists the stores
-  of other copies it finds (profiles, games, size) and offers "Attach" or "Move here". In Settings →
-  Data there is a "Data store" block. Nothing is deleted without a question that names the size.
-- 🛟 **The launcher warns when its data sits inside OneDrive and offers to move it out** — whole mod
-  folders have vanished from there.
-- 🔴 **A corrupted settings file no longer wipes profiles** — it is set aside as a copy, the launcher
-  starts on defaults and says so. Installing a pack to another drive cannot lose mods, and deleting a
-  profile cannot drag a neighbour's mods with it.
-- 📝 **The log now shows what you did, not only what the launcher did:** which question was asked and
-  which button pressed, what was switched on and off, what was removed. The log no longer grows without
-  end.
-- 🛡️ **The launcher no longer closes entirely because one action misfired**, does not freeze on start or
-  after installing mods, and a dropped connection does not look like a hang. Out of disk space — it says
-  exactly that.
+- 🔢 **The version window — click the version number in the title bar.** It shows which build is running and which exist, and lets you install another — including going back to the previous one. Settings are snapshotted and come back with the version.
+- 🗂️ **The data store can be chosen, moved or attached.** Moved the launcher's folder? It lists the stores of other copies it finds (profiles, games, size) and offers "Attach" or "Move here". In Settings → Data there is a "Data store" block. Nothing is deleted without a question that names the size.
+- 🛟 **The launcher warns when its data sits inside OneDrive and offers to move it out** — whole mod folders have vanished from there.
+- 🔴 **A corrupted settings file no longer wipes profiles** — it is set aside as a copy, the launcher starts on defaults and says so. Installing a pack to another drive cannot lose mods, and deleting a profile cannot drag a neighbour's mods with it.
+- 📝 **The log now shows what you did, not only what the launcher did:** which question was asked and which button pressed, what was switched on and off, what was removed. The log no longer grows without end.
+- 🛡️ **The launcher no longer closes entirely because one action misfired**, does not freeze on start or after installing mods, and a dropped connection does not look like a hang. Out of disk space — it says exactly that.
 - 🇹🇷 **Fixed on a system with Turkish language settings.**
 
 ## 1.3.6
