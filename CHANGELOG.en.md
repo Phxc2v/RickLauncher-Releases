@@ -1,8 +1,33 @@
-﻿# What's new in RickLauncher
+# What's new in RickLauncher
 
 > Plain-language notes on what changed in each version.
 
-## Unreleased
+## 2.4.1
+
+**Our mods**
+
+- ✨ **The "Our mods" button no longer hides behind a mod that is not there.** When a mod was enabled in a profile and its files later vanished (folder deleted, game reinstalled), the launcher kept counting it as installed: the mod list did not show it, yet Crash Doctor and the Camera were not offered to the profile. "Already installed" now means "the files are there".
+
+**Mods**
+
+- 👁️ **A mod whose manifest calls itself part of the game no longer vanishes from the list.** Authors take a DLC's `SubModule.xml` as a template and keep its `ModuleType="Official"` or `"OfficialOptional"` — Warlords Battlefield does exactly that: 1.3.0 calls itself "Official", 1.4.0 and 1.5.0 "OfficialOptional". The launcher took it at its word and treated the mod as part of the game: hid it from the list, would not let it be toggled or copied into a profile — and the player saw "the launcher does not find the mod, only its RBM submod". Now only a module the game really ships (Native, SandBox, War Sails and the rest) counts as part of the game; everything else is an ordinary mod, whatever the manifest says.
+
+- ⏱️ **The download window appears at once, not ten seconds later.** When the archive-keeping folder lives on an external disk that has gone to sleep, the launcher waited for it to spin up before every update, mod install or translation — on the very thread that draws the window: button pressed, nothing on screen, eight to ten seconds in a row. The archive folder is now read in the background and the progress window comes up immediately.
+
+**Mod updates**
+
+- 🎯 **An update takes from the Nexus page the file that continues yours, not the newest one.** Many mod pages carry several main files at once — the mod and its add-on, builds for different game versions. The launcher took «the newest main file», and updating RBM installed the RBM War Sails add-on uploaded a minute later in its place: the mod itself was moved aside, the add-on took its slot and promptly complained that RBM was missing. Now the launcher asks what became of the file you have: if the author says what it turned into, that is taken; if the file is still current, there is no update, whatever else changed on the page; if it was moved to old files, the file whose name continues the same line is taken. And a downloaded module that itself requires the mod being updated is its add-on, not a new build — such an update is cancelled and your copy stays put.
+
+- 📦 **When the exact mod version is not to be had, the closest one for your game is taken.** One rule for the Nexus page and for your archive folder: first exactly the version the pack names or the one chosen for your game; failing that, the closest **newer build made for this same game version**; failing that too, the closest **older build for this game version**. A pack whose file the author removed from Nexus now installs from the neighbouring build of the same mod instead of stopping, and a pack for game 1.2 is no longer assembled from 1.4 copies kept in the archive folder after a 1.4 install (that is how Europe 1100 died: 12 of 19 mods at the wrong version). Which build and why is written in the launcher log; a copy nobody knows the game of is never taken.
+
+**Installing packs**
+
+- 🐙 **A GitHub mod with no pinned release now installs on its own.** When a pack names only the repository and the file name, the launcher asks GitHub for the release (the pack's version first, then the newest), and for our own mods falls back to the mirror when GitHub cannot be reached. Such a mod used to be sent to the embedded browser at the repository page, where there is nothing to download: ten minutes of waiting, "could not download", and a row asking you to confirm you are not a robot when no such check existed.
+- 🪟 **The hidden browser no longer waits for what will not come.** When a download reaches a step that needs a person (a button to press, ModDB to walk, a page that is neither Nexus nor ModDB) and showing the browser is off in Settings, the mod is marked as not downloaded at once and the install moves on — instead of waiting out a ten-minute cap, or for ever. One exception, like the Nexus sign-in: a real Cloudflare "I'm not a robot" check that two fresh attempts did not clear shows the window whatever the setting says — nobody can pass it without hands.
+
+**Crash analysis**
+
+- 🩺 **Four new crash diagnoses.** A world-map crash from a clan with no leader at its daily tick and a deployment crash where a mod asks a still-empty formation for its nearest enemy — both guarded by Crash Doctor. A battle crash where a banner texture is applied to armour that no longer exists, and a battle crash where a soldier's place in the formation points outside the formation — both diagnosed with the culprit named.
 
 ## 2.4.0
 
