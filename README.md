@@ -1,10 +1,10 @@
 # RickLauncher
 
-**Latest version: 2.4.0** · [⬇ Download the latest release](https://github.com/Phxc2v/RickLauncher-Releases/releases/latest) · [English](#english) · [Русский](#русский)
+**Latest version: 2.4.1** · [⬇ Download the latest release](https://github.com/Phxc2v/RickLauncher-Releases/releases/latest) · [English](#english) · [Русский](#русский)
 
 > This repository hosts the **public releases** of RickLauncher — the installer, the archive and the changelog. The source code lives in a separate private repository.
 >
-> Two downloads, same contents: `RickLauncher-Setup-v2.4.0.exe` for a first install (per-user, no admin rights), or `RickLauncher-v2.4.0.zip` to unpack anywhere. What changed: [CHANGELOG.en.md](CHANGELOG.en.md) / [CHANGELOG.ru.md](CHANGELOG.ru.md) — the full list of everything in 2.4.0: [CHANGELOG-2.4.0-full.en.md](CHANGELOG-2.4.0-full.en.md) / [CHANGELOG-2.4.0-full.ru.md](CHANGELOG-2.4.0-full.ru.md).
+> Two downloads, same contents: `RickLauncher-Setup-v2.4.1.exe` for a first install (per-user, no admin rights), or `RickLauncher-v2.4.1.zip` to unpack anywhere. What changed: [CHANGELOG.en.md](CHANGELOG.en.md) / [CHANGELOG.ru.md](CHANGELOG.ru.md) — the full list of everything in 2.4.0: [CHANGELOG-2.4.0-full.en.md](CHANGELOG-2.4.0-full.en.md) / [CHANGELOG-2.4.0-full.ru.md](CHANGELOG-2.4.0-full.ru.md).
 
 ---
 
