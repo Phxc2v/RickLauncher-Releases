@@ -2,6 +2,99 @@
 
 > Plain-language notes on what changed in each version.
 
+## 2.4.2
+
+**Launch**
+
+- 🐛 **"The value cannot be an empty string (Parameter 'path')" on Play.** When Windows cannot find the Documents folder (it was moved to OneDrive or to a drive that is no longer there), the launcher died preparing the launch with that line — on Native and with mods alike. It now says what is wrong: where Windows looks for the folder and how to put it back (Properties → Location → Restore Default). Nothing is touched, nothing is guessed in its place.
+- 🔁 **"Mod not fully installed" no longer loops.** Before a launch the launcher itself clears a mod's outdated shader cache (Europe 1700 after a game update, for example), and the integrity check then counted those files as missing — reinstalling answered "already installed" and the profile would not start. A mod's shader cache no longer takes part in the integrity check.
+
+**Data safety**
+
+- 🛡️ **A damaged or locked `profiles.json` no longer costs you mods and saves.** When the profile list could not be read (damaged, or held for a second by an antivirus/OneDrive), the launcher built default profiles — and the orphan sweep on the next start deleted the vaults, saves and settings of every real profile. Now nothing is deleted in such a session, a file with no copy is never overwritten, a locked file is read again, and every breakage keeps a `.corrupt` copy of its own.
+- 🛡️ **Going back a version or leaving the beta no longer deletes profiles made later.** The older profile list came back and the new profiles' folders were at once taken for orphans. Anything a kept copy remembers is now left alone, and leaving the beta restores the old files only when the data format really changed.
+- 🛡️ **"Replace the pack" no longer wipes the files of the new install.** The old pack folder was being deleted in the background while the install wrote into it.
+- 🛡️ **Restoring a backup changes data only after everything is unpacked**; cancelling changes nothing, and an interrupted restore no longer leaves the launcher on stale data. A damaged settings file no longer wipes the Nexus key and the Steam sign-in.
+- 🛡️ **"Move here" for a data store no longer carries Workshop and game-folder mods off the disk**, and a failed or cancelled link/move puts the previous catalog back. Backups no longer include Workshop and game files and no longer drop a mod's own Shaders folder.
+
+**Cancel**
+
+- ⏹️ **Cancel is a cancel, not an error.** Installing from a card, reinstalling, translations, updates from Nexus/GitHub/ModDB, dependencies and unpacking no longer say "Error: The operation was canceled" or put "failed" on the review screen. Cancelling one mod stops the whole list; unpacking an update hears the button too.
+
+**Mods**
+
+- 🎯 **A link to a specific GitHub release installs that release, not the latest one.**
+- 🎯 **A file you picked on Nexus is no longer swapped for the mod's main file** when it cannot be fetched — the page opens so you can pick again.
+- ✅ **Mods naming an early-access build (e1.x) as their minimum are no longer blocked as "needs a newer game"** on 1.2 and 1.4; packs for e1.x no longer count as matching 1.x.
+- ✅ **Mods whose names merely contain "MCM" or "Harmony" are now checked for game compatibility too**; a mod DLL that cannot be read is "not checked", not "clean".
+- 🧹 **Cancelling a mod install no longer leaves a half-copied folder**, and installing over an older version leaves the old one working.
+- 🧹 **A translation installed twice removes cleanly**; a failure halfway leaves nothing in the mod; UTF-16 translations are recognised.
+- 👥 **A cloned profile no longer claims other people's mods** (the game folder's and other profiles').
+- 🔕 **Crash Doctor crashes you deleted no longer count as "missing mod files"**, rolling back an update no longer brings them back, and a failed rollback no longer leaves a second copy of the mod.
+- A Workshop mod keeps being checked on the Workshop after an update from disk; "Add a mod from disk" no longer offers the internal RickCrashCatch; a mod XML with a DOCTYPE is not reported broken; after buying War Sails, mods that need it are no longer refused by an old record; a new mod no longer lands below Crash Doctor in the order; archives kept during parallel installs no longer drop out of the archive folder.
+
+**Mod updates**
+
+- 🔁 **Declining an update with no version number ("a newer file") no longer hides every later update of that mod.**
+- 📝 **The update journal records what you answered**: the "not updated" line used to be written before the question and stayed next to "updated".
+- An update from the remembered list is applied where the mod is now and no longer takes a shared copy away from other profiles; failures of update sources are written to the launcher log.
+
+**Pack installs and downloads**
+
+- ⬇️ **A download cut short no longer turns into a permanently "unavailable" mod** — it resumes where it stopped on retry. A server that accepts the connection and then goes silent no longer hangs the download, and when one part of a file fails for good the other connections stop at once.
+- ⬇️ **A slow Nexus reply no longer stops the whole pack as "cancelled"**, and pressing Cancel no longer marks GitHub "unreachable" for five minutes.
+- 🧩 **An interrupted pack reinstall no longer drops the mods it had not reached**; the pack record no longer lists a mod twice.
+- 🧩 **The "sign in to Nexus/Steam" notice considers every address of a mod**, and the gallery no longer offers an e1.x pack on a 1.x game.
+- 🔒 The installer no longer unpacks executables disguised with a trailing dot or space; a malformed checksum in a third-party pack can no longer write outside the cache folder; a hung 7-Zip no longer stalls unpacking, and Cancel works in the middle of a large file.
+- 📚 **Mods whose folder is spelled differently from the reference (Europe 1700) again get popularity, subtitle, section and Workshop address** and are recognised as installed. The launcher no longer freezes while a downloaded reference is installed; mod descriptions are no longer read from Nexus pages, and GitHub READMEs no longer spend the API limit.
+
+**Pack editor**
+
+- ✏️ **Edits to a mod's first address (checksum, tag, file) now reach the installer when the mod has several addresses.**
+- ✏️ **Unsaved edits are no longer lost without a word**: closing the window or opening another project asks "save?", and "New" only asks when there is something to lose. A project from the shipped Packs folder is saved via "Save as"; the link check can be stopped and shows its progress and result. The editor follows the skin and marks red only a mod that cannot be installed.
+- 📖 Manual: how to check links and add a checksum by hand, and what the player notice is; button names checked in every language.
+
+**Shaders**
+
+- 🧱 **Buttons and questions are right again for a profile with its own shader cache.** After a build the "Build" button stayed, every Play asked "not built", and the build answered "already built".
+- 🧱 **A build that could not start is no longer marked as built** — a build error with the reason is shown. The "already built" list belongs to its own profile's cache; deleting one profile's cache no longer wipes another's resume point and says honestly how many files could not be removed.
+- 🧱 **Error boxes from other programs and other mods no longer stop the build.** The pre-build check measures the drive of the profile's cache, and the pre-build window names the quality from this game version's config, not from your Documents.
+- A build after a warm one no longer skips banking the base shaders on a cold cache; measuring the cache no longer freezes the window.
+
+**Crash reports**
+
+- 🩺 **An old crash folder no longer turns a fresh diagnosis into "cause unknown"**; rules that name a culprit by its stack now fire on the in-game catcher's record even when the game left no crash folder.
+- 🩺 **TOR-only advice is not given when TOR is off**; StoryMode is no longer taken for TOR; old shader-build logs no longer appear in reports about ordinary play. The Game DVR fix applies to your own account even when an administrator's credentials were entered at the UAC prompt.
+
+**Steam**
+
+- 🔑 **When Steam is unreachable the QR sign-in window no longer opens**, a timeout is no longer reported as a cancel, and Workshop updates are asked through Steam's public endpoint.
+
+**Windows and interface**
+
+- 💬 **Start-up questions are asked one at a time.** The second one used to answer "no" to the first on its own — for example to the set-aside shaders.
+- ✕ **The ✕ on the Nexus sign-in window stops the pack install**, as Alt+F4 does; "minimize to background" is hidden on the Nexus sign-in.
+- ⎋ **Esc in the mods window answers a question that is on top of it** instead of throwing away all your edits. Esc and Enter work in the updates, translations, recommended mods, profile transfer, shader build and other windows.
+- 📋 **A pasted RLink set is no longer lost when the launcher is busy.** A batch install no longer stops on a modal copy-error box — the reason goes to the review screen.
+- ⏱️ **The window no longer freezes**: "Add an installed mod", "Our mods", Settings, deleting a profile, copying saves, re-reading modules after dependencies and self-update run in the background; installing a version from the versions window shows a progress bar with Cancel.
+- 🧾 **"Delete profile" works even if the tree was rebuilt while the question was open.** The reference download no longer sticks at 0 % after an error. The question about a stuck launcher copy shows text instead of keys.
+- 🎨 The update and donate buttons have sharp text again; the OneDrive warning is amber (the game still starts); long names show in full on hover; the per-profile update tick follows the launcher-wide setting right after Settings closes.
+
+- 🔘 **The main button in dialogs is now always on the left**, with Cancel to its right; half of the windows had it the other way round.
+- 🟨 **Amber, not red,** for the reference strip and the "suspect" mods after a crash: the game still starts. Red is kept for what stops the game from starting.
+- 🖼️ **The Play button has its frame in every skin**, not only in Verdant.
+- 📋 **The batch review window closes the same way however you close it**: ✕, Esc and Alt+F4 apply what is ticked — switching off only the mods the game would not start with. ✕ used to apply and Alt+F4 did not.
+- 💾 **The data backup taken when switching versions keeps every bookkeeping file** — at the catalog root and in each profile's folder; three files used to be left out.
+- 📦 **The question about files gone from Nexus tells the truth**: the launcher takes another version of the same mod for your game rather than installing the pack "without them".
+
+**Subscriber journal**
+
+- 📰 **A new issue is found even if you open the launcher every day** — every start used to push the check another 20 hours away. A corrected issue comes with its own mod list, cancelling no longer deletes an issue already downloaded, "Download all" no longer says "all here" after a break, and the reader fits pages to the window and no longer mixes issues up when you switch quickly.
+
+**Translations**
+
+- 🌐 **Translations proofread in all six languages.** French: machine-translation errors fixed (TOR, "Conduire", "Peau", a translated Mount and Blade path), consistent terms and typography. Turkish, Chinese: consistent terms, buttons named as they are labelled. Russian: formal address, no wrong cases next to numbers, consistent terms.
+
 ## 2.4.1
 
 **Our mods**
