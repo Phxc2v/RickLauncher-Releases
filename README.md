@@ -1,10 +1,10 @@
 # RickLauncher
 
-**Latest version: 2.4.2** · [⬇ Download the latest release](https://github.com/Phxc2v/RickLauncher-Releases/releases/latest) · [English](#english) · [Русский](#русский)
+**Latest version: 2.4.8** · [⬇ Download the latest release](https://github.com/Phxc2v/RickLauncher-Releases/releases/latest) · [English](#english) · [Русский](#русский)
 
 > This repository hosts the **public releases** of RickLauncher — the installer, the archive and the changelog. The source code lives in a separate private repository.
 >
-> Two downloads, same contents: `RickLauncher-Setup-v2.4.2.exe` for a first install (per-user, no admin rights), or `RickLauncher-v2.4.2.zip` to unpack anywhere. What changed: [CHANGELOG.en.md](CHANGELOG.en.md) / [CHANGELOG.ru.md](CHANGELOG.ru.md) — the full list of everything in 2.4.0: [CHANGELOG-2.4.0-full.en.md](CHANGELOG-2.4.0-full.en.md) / [CHANGELOG-2.4.0-full.ru.md](CHANGELOG-2.4.0-full.ru.md).
+> Two downloads, same contents: `RickLauncher-Setup-v2.4.8.exe` for a first install (per-user, no admin rights), or `RickLauncher-v2.4.8.zip` to unpack anywhere. What changed: [CHANGELOG.en.md](CHANGELOG.en.md) / [CHANGELOG.ru.md](CHANGELOG.ru.md) — the full list of everything in 2.4.0: [CHANGELOG-2.4.0-full.en.md](CHANGELOG-2.4.0-full.en.md) / [CHANGELOG-2.4.0-full.ru.md](CHANGELOG-2.4.0-full.ru.md).
 
 ---
 
@@ -17,6 +17,9 @@ Keep 1.2, 1.3 and 1.4 side by side, each with its own sets of mods, its own save
 Switching between them takes one click, nothing has to be moved by hand, and nothing gets mixed up.
 
 What's new is in `CHANGELOG.en.md`. The "Unreleased" section describes what is coming in the next release.
+
+The launcher's website: https://rickhub.net/en/projects/ricklauncher/ · the mod encyclopedia: https://bannercodex.com/en/ —
+the "Open in RickLauncher" button on the site opens a mod's card right in the launcher.
 
 ---
 
@@ -94,7 +97,10 @@ runs** — the game's folder stays as it was. Close the launcher and everything 
 - **Before launch it checks that the set will hold together.** A mod missing a library brings the game down
   at start-up — before the main menu, leaving no crash files and nothing in the log. From inside the game
   that cannot be caught. The launcher sees it in advance, says which mod is missing what, and fetches what
-  is missing with one button — exactly the build your game needs.
+  is missing with one button — exactly the build your game needs. It also tells you when a mod needs a
+  part of the game that is switched off (War Sails), when a mod lacks sounds without which it stops the
+  game at the first battle, and which mod the game died loading last time — with a button to switch it
+  on or off.
 - **A green or red bar beside mods.** The launcher remembers which set of mods last reached the game
   itself and closed normally. If the game crashed after that, everything that appeared or updated since is
   marked red — with a "Switch these N off" button. The load order is left alone.
@@ -104,6 +110,9 @@ runs** — the game's folder stays as it was. Close the launcher and everything 
 - **Crashes explained in plain words.** If the game falls over, the launcher reads its files and says what
   happened in words: out of memory, the graphics card stopped responding, damaged shaders, a clash between
   mods. The technical detail is tucked behind a button — you need it only if you are sending us a report.
+- **Crash Doctor is our mod.** Crash Doctor catches crashes right inside the game, and the launcher reads its
+  records into the crash report. Sending them to us is ready but switched off for now: our server is not
+  running yet, so the launcher sends nothing.
 - **A check of your machine before long work** — free memory, disk space, graphics settings — with a "fix
   it" button wherever that is possible.
 - **A mod carrying somebody else's shader cache.** Some mods ship their shaders already compiled. When those
@@ -181,6 +190,10 @@ Stuck? Menu → **"Help"**.
 Everything the launcher knows about you — sets of mods, saves, downloaded mods — is in a `RickLauncherData`
 folder beside the program itself. Move that folder along with the program and you have moved everything.
 
+Running out of space? Settings → Data → "Move to another drive…": the launcher shows how big the data
+is and which drive it fits on, restarts and moves everything itself. Profiles, mods, saves and shaders
+keep working.
+
 When you uninstall, the launcher asks whether to delete it. The default is **no**: your saves and sets stay.
 
 ### If your Documents folder is in OneDrive
@@ -209,7 +222,7 @@ usable throughout.
 
 ---
 
-## Support the project
+## Donate
 
 The launcher is free and will stay free. Donating unlocks nothing and changes nothing — but hosting the
 releases and the backup download server come out of our own pocket.
@@ -227,7 +240,7 @@ send the whole report folder — the window that explains the crash opens it for
 - Telegram: https://t.me/CodeRickTg
 - Discord: https://discord.gg/ZDJZFxQeMV
 
-Links to all our places are along the bottom of the launcher's main window.
+Links to all our places are along the bottom of the launcher's main window and on https://rickhub.net/en/.
 
 ---
 
@@ -240,6 +253,9 @@ Links to all our places are along the bottom of the launcher's main window.
 между ними в один клик, ничего не надо переносить руками и ничего не перемешивается.
 
 Что нового — в `CHANGELOG.ru.md`. Раздел «Готовится» описывает то, что выйдет следующим выпуском.
+
+Сайт лаунчера: https://rickhub.net/ru/projects/ricklauncher/ · энциклопедия модов: https://bannercodex.com/ru/ —
+кнопка «Открыть в RickLauncher» на сайте открывает карточку мода прямо в лаунчере.
 
 ---
 
@@ -314,7 +330,9 @@ RickLauncher берёт это на себя. Ваши моды лежат в е
 - **Перед запуском проверяется, соберётся ли набор.** Мод, которому не хватает библиотеки, роняет игру на
   старте — до главного меню, не оставляя ни файлов вылета, ни записей в журнале. Изнутри игры такое не
   поймать. Лаунчер видит это заранее, говорит, какому моду чего не хватает, и докачивает недостающее
-  одной кнопкой — именно той версии, что нужна вашей игре.
+  одной кнопкой — именно той версии, что нужна вашей игре. Заодно видно, если моду нужна выключенная
+  часть игры (War Sails), если у мода нет звуков, без которых он остановит игру в первом бою, и на каком
+  моде игра упала при загрузке в прошлый раз, — с кнопкой, которая включит или выключит нужное.
 - **Зелёная и красная полоса у модов.** Лаунчер запоминает, с каким набором модов игра в последний раз
   нормально дошла до самой игры. Если после этого она упала, всё, что появилось или обновилось с тех
   пор, помечено красным — и есть кнопка «Выключить эти N». Порядок загрузки не трогается.
@@ -324,6 +342,9 @@ RickLauncher берёт это на себя. Ваши моды лежат в е
 - **Разбор вылета человеческим языком.** Если игра упала, лаунчер читает её файлы и объясняет причину
   понятными словами: мало памяти, зависла видеокарта, испорченные шейдеры, конфликт модов. Технические
   подробности спрятаны под отдельную кнопку — они нужны, только если вы отправляете отчёт нам.
+- **Crash Doctor — наш мод.** Crash Doctor ловит вылеты прямо в игре, а лаунчер забирает его записи в отчёт о
+  вылете. Отправка этих записей нам готова, но пока выключена: наш сервер ещё не запущен, поэтому лаунчер
+  ничего не отправляет.
 - **Проверка системы перед долгой работой** — свободная память, место на диске, настройки видеокарты — и
   кнопка «исправить» там, где это можно исправить.
 - **Чужой кэш шейдеров внутри мода.** Некоторые моды везут с собой уже собранные шейдеры. Если они собраны
@@ -397,6 +418,10 @@ RickLauncher берёт это на себя. Ваши моды лежат в е
 Всё, что лаунчер про вас знает — наборы модов, сохранения, скачанные моды, — лежит в папке
 `RickLauncherData` рядом с самой программой. Перенесли папку вместе с программой — перенесли всё.
 
+Места на диске стало мало — в настройках, раздел «Данные», кнопка «Перенести на другой диск…»: лаунчер
+покажет, сколько весят данные и на какой диск они поместятся, перезапустится и перенесёт всё сам.
+Профили, моды, сохранения и шейдеры продолжат работать.
+
 При удалении лаунчер спросит, удалять ли эту папку. По умолчанию — **нет**: сохранения и наборы остаются.
 
 ### Если ваши «Документы» в OneDrive
@@ -424,7 +449,7 @@ RickLauncher берёт это на себя. Ваши моды лежат в е
 
 ---
 
-## Поддержать
+## Донат
 
 Лаунчер бесплатный и таким останется. Донат ничего не открывает и ни на что не влияет — но хостинг
 релизов и запасной сервер для загрузок оплачиваются из своего кармана.
@@ -442,4 +467,4 @@ RickLauncher берёт это на себя. Ваши моды лежат в е
 - Telegram: https://t.me/CodeRickTg
 - Discord: https://discord.gg/ZDJZFxQeMV
 
-Ссылки на все наши площадки есть внизу главного окна лаунчера.
+Ссылки на все наши площадки есть внизу главного окна лаунчера и на сайте https://rickhub.net/ru/.
